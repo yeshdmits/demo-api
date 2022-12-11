@@ -6,6 +6,11 @@ import org.common.jms.AsyncCallService;
 import org.common.jms.BtcAsyncExchangeService;
 import org.springframework.stereotype.Service;
 
+/**
+ * Implementation service for setting up asynchronous logic
+ *
+ * @author yeshenkodmit
+ */
 @Service
 public class AsyncWebCallService implements AsyncCallService {
 

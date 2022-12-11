@@ -19,7 +19,7 @@ To rise this service execute the following commands:
 
     2. Run docker-compose up
     
-    3. connect http://localhost:8080
+    3. connect http://localhost:8080/swagger
 
 ## Using Postman collection
 

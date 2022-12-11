@@ -7,6 +7,9 @@ import org.restservice.repository.MongoOrderRepository;
 import org.restservice.service.DbEntityService;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author yeshenkodmit
+ */
 @Slf4j
 @Service
 public class MongoOrderService implements DbEntityService<Order> {

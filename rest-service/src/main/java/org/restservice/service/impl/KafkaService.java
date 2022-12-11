@@ -9,6 +9,9 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author yeshenkodmit
+ */
 @Slf4j
 @Service
 public class KafkaService implements JmsServiceConsumer<OrderDto>, JmsServiceProducer<OrderDto> {

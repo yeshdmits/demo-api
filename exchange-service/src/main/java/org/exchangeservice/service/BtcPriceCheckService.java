@@ -12,6 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 
+/**
+ * Implementation asynchronous logic
+ *
+ * @author yeshenkodmit
+ */
 @Slf4j
 @Service
 public class BtcPriceCheckService implements BtcAsyncExchangeService<OrderDto> {
@@ -27,6 +32,13 @@ public class BtcPriceCheckService implements BtcAsyncExchangeService<OrderDto> {
     this.producer = producer;
   }
 
+  /**
+   * Requesting each 2 seconds for maxRepeat property
+   * or while current btc price less than order price limit
+   * Produce exchanging
+   *
+   * @param order order data transfer object with limit price
+   */
   @Async
   @Override
   public void asyncExchange(OrderDto order) {

@@ -16,6 +16,7 @@
   <description>rest-service</description>
   <properties>
     <java.version>11</java.version>
+    <swaggerui.version>1.6.8</swaggerui.version>
   </properties>
   <dependencies>
     <dependency>
@@ -47,6 +48,11 @@
       <artifactId>common</artifactId>
       <version>0.0.1-SNAPSHOT</version>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
+      <version>${swaggerui.version}</version>
     </dependency>
   </dependencies>
 

@@ -3,7 +3,7 @@ package org.restservice.service.impl;
 import lombok.extern.slf4j.Slf4j;
 import org.common.dto.OrderDto;
 import org.common.jms.BtcAsyncExchangeService;
-import org.restservice.exception.ExchangeException;
+import org.common.exception.ExchangeException;
 import org.restservice.model.Account;
 import org.restservice.model.Order;
 import org.restservice.model.OrderStatus;
@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * @author yeshenkodmit
+ */
 @Slf4j
 @Service
 public class ExchangeBtcService implements BtcAsyncExchangeService<OrderDto> {

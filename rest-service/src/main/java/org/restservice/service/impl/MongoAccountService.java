@@ -7,6 +7,9 @@ import org.restservice.repository.MongoAccountRepository;
 import org.restservice.service.DbEntityService;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author yeshenkodmit
+ */
 @Slf4j
 @Service
 public class MongoAccountService implements DbEntityService<Account> {

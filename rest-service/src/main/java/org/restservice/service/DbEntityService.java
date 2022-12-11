@@ -2,6 +2,9 @@ package org.restservice.service;
 
 import java.util.Optional;
 
+/**
+ * @author yeshenkodmit
+ */
 public interface DbEntityService<T> {
 
   T create(T entity);

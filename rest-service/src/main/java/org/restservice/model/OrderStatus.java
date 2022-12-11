@@ -1,5 +1,8 @@
 package org.restservice.model;
 
+/**
+ * @author yeshenkodmit
+ */
 public enum OrderStatus {
   INPROGRESS("in progress"),
   PROCESSED("processed"),

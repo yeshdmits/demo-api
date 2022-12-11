@@ -6,6 +6,10 @@ import org.common.jms.JmsServiceProducer;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+/**
+ * Producer kafka implementation
+ * @author yeshenkodmit
+ */
 @Slf4j
 @Service
 public class KafkaServiceProducer implements JmsServiceProducer<OrderDto> {

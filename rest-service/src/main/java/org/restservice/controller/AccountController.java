@@ -1,5 +1,6 @@
 package org.restservice.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import java.util.Optional;
 import org.restservice.model.Account;
 import org.restservice.service.DbEntityService;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author yeshenkodmit
+ */
 @RestController
 @RequestMapping("/api/account")
 public class AccountController {
@@ -21,6 +25,7 @@ public class AccountController {
     this.accountService = accountService;
   }
 
+  @Operation(summary = "createAccount(name, usd_balance)")
   @PostMapping
   public ResponseEntity<Account> createAccount(@RequestParam Optional<String> name,
       @RequestParam(defaultValue = "0") Double usdBalance) {
@@ -34,6 +39,7 @@ public class AccountController {
         .orElse(ResponseEntity.badRequest().build());
   }
 
+  @Operation(summary = "fetchAccountDetails(account_id)")
   @GetMapping("/{accountId}")
   public ResponseEntity<Account> fetchAccountDetails(@PathVariable String accountId) {
     return accountService.read(accountId)

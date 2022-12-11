@@ -1,5 +1,6 @@
 package org.restservice.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.common.dto.OrderDto;
 import org.common.jms.JmsServiceProducer;
 import org.restservice.model.Account;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author yeshenkodmit
+ */
 @RestController
 @RequestMapping("/api/order")
 public class OrderController {
@@ -29,6 +33,7 @@ public class OrderController {
     this.accountService = accountService;
   }
 
+  @Operation(summary = "createLimitOrder(account_id, price_limit, amount)")
   @PostMapping("/{accountId}")
   public ResponseEntity<OrderDto> createLimitOrder(@PathVariable String accountId,
       @RequestParam Double priceLimit,
@@ -49,6 +54,7 @@ public class OrderController {
         .orElse(ResponseEntity.badRequest().build());
   }
 
+  @Operation(summary = "fetchOrderDetails(order_id)")
   @GetMapping("/{orderId}")
   public ResponseEntity<Order> fetchOrderDetails(@PathVariable String orderId) {
     return orderService.read(orderId)

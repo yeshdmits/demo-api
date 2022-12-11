@@ -9,6 +9,11 @@ import org.springframework.http.MediaType;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.reactive.function.client.WebClient;
 
+/**
+ * Web flux library configuration for WebClient
+ *
+ * @author yeshenkodmit
+ */
 @Configuration
 @EnableAsync
 public class WebClientConfig {
