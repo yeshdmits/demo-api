@@ -2,8 +2,8 @@ package org.restservice.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.common.dto.OrderDto;
-import org.common.jms.BtcAsyncExchangeService;
 import org.common.exception.ExchangeException;
+import org.common.jms.BtcAsyncExchangeService;
 import org.restservice.model.Account;
 import org.restservice.model.Order;
 import org.restservice.model.OrderStatus;
@@ -23,13 +23,13 @@ public class ExchangeBtcService implements BtcAsyncExchangeService<OrderDto> {
   private final DbEntityService<Account> accountService;
   private final DbEntityService<Order> orderService;
 
-  public ExchangeBtcService(MongoAccountService accountService, MongoOrderService orderService) {
+  public ExchangeBtcService(DbEntityService<Account> accountService,
+      DbEntityService<Order> orderService) {
     this.accountService = accountService;
     this.orderService = orderService;
   }
 
   @Override
-  @Async
   public void asyncExchange(OrderDto orderDto) {
     Order order = orderService.read(orderDto.getId())
         .orElseThrow(() -> new ExchangeException("Failed exchanging. Could not find order"));
@@ -39,16 +39,18 @@ public class ExchangeBtcService implements BtcAsyncExchangeService<OrderDto> {
       order.setExchangePrice(orderDto.getExchangePrice());
       proceedExchanging(account, order);
       order.setStatus(OrderStatus.PROCESSED.toString());
-    } catch (ExchangeException exception) {
+    } catch (RuntimeException exception) {
       log.error(exception.getMessage());
       order.setStatus(OrderStatus.ERROR.toString());
+      throw exception;
     } finally {
       saveAccountAndOrder(account, order);
     }
   }
 
 
-  @Transactional(propagation = Propagation.REQUIRED)
+  @Transactional(propagation = Propagation.REQUIRES_NEW)
+  @Async
   public void saveAccountAndOrder(Account account, Order order) {
     accountService.update(account);
     orderService.update(order);

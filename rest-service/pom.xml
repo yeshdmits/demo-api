@@ -17,6 +17,7 @@
   <properties>
     <java.version>11</java.version>
     <swaggerui.version>1.6.8</swaggerui.version>
+    <aspectj.version>1.9.9.1</aspectj.version>
   </properties>
   <dependencies>
     <dependency>
